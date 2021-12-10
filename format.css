@@ -13,53 +13,70 @@ html body{
     width: 100%;
 }
 
-.scroll-cont-1{
+.scroll-cont-right{
     overflow-x: scroll;
     overflow-y: hidden;
 }
 
-.scroll-cont-2{
+.scroll-cont-down{
     overflow-x: hidden;
     overflow-y: scroll;
 }
 
-.scroll-cont-3{
+.scroll-cont-left{
     overflow-x: scroll;
     overflow-y: hidden;
 }
 
-.cont-1{
+.scroll-cont-up{
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.cont-right{
     width: 200%;
     height: 100%;
 }
 
-.cont-2{
+.cont-down{
     width: 100%;
     height: 200%;
 }
 
-.cont-3{
+.cont-left{
     width: 200%;
     height: 100%;
 }
 
+.cont-up{
+    width: 100%;
+    height: 200%;
+    display: flex;
+    flex-direction: column-reverse;
+}
 
-.item-1{
+
+.item-right{
     width: 50%;
     height:100%;
     float: left;
 }
 
-.item-2{
+.item-down{
     width: 100%;
     height:50%;
     float: left;
 }
 
-.item-3{
+.item-left{
     width: 50%;
     height:100%;
     float: right;
+}
+
+.item-up{
+    width: 100%;
+    height:100%;
 }
 
 .item-cont{
