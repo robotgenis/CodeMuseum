@@ -1,0 +1,69 @@
+html body{
+    width:100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    overflow:hidden;
+}
+
+.scroll-cont{
+    position: fixed;
+    height: 100%;
+    width: 100%;
+}
+
+.scroll-cont-1{
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+
+.scroll-cont-2{
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.scroll-cont-3{
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+
+.cont-1{
+    width: 200%;
+    height: 100%;
+}
+
+.cont-2{
+    width: 100%;
+    height: 200%;
+}
+
+.cont-3{
+    width: 200%;
+    height: 100%;
+}
+
+
+.item-1{
+    width: 50%;
+    height:100%;
+    float: left;
+}
+
+.item-2{
+    width: 100%;
+    height:50%;
+    float: left;
+}
+
+.item-3{
+    width: 50%;
+    height:100%;
+    float: right;
+}
+
+.item-cont{
+    float: left;
+    width: 100%;
+    height: 100%;
+}
