@@ -14,4 +14,4 @@ Developement Plan/Ideas
 - interest algorithm
 - navbar
 - suggestions page
-- test
+- test #2
