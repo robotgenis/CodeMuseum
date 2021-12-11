@@ -1,5 +1,17 @@
-extends layout
-
-block content
-  h1= title
-  p Welcome to #{title}
+doctype html
+html
+  head
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js")
+    link(rel="stylesheet" href="/stylesheets/scroll.css")
+    link(rel="stylesheet" href="/stylesheets/format.css")
+    script(src="/javascripts/main.js")
+  body
+    .panel-cont
+      .panel
+        h1 A Cool Template
+        p Test paragraph with some words 
+        svg(width="40%" height="100%" viewBox="0 0 500 500" preserveAspectRatio="xMinYMin meet" style="" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink")
+          foreignObject(width="100%" height="100%" xmlns="http://www.w3.org/1999/xhtml")
+                div(xmlns="http://www.w3.org/1999/xhtml" style="")
+                    .code-cont
+                        pre(class='code' style="font-size: 20;") Code is having trouble loading!!!
