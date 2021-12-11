@@ -5,7 +5,7 @@ http://www.jsfuck.com/
 
 Developement Plan/Ideas
 
-
+- create Developement branch on git
 - convert to jade
 - organize storage of pieces
 - opening page with info about site
