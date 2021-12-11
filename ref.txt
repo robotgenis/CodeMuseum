@@ -1,3 +1,16 @@
 https://www.youtube.com/watch?v=DEqXNfs_HhY - https://www.a1k0n.net/2011/07/20/donut-math.html
 http://www.jsfuck.com/
 
+
+
+Developement Plan/Ideas
+
+
+- convert to jade
+- organize storage of pieces
+- opening page with info about site
+- save scroll direction
+- prevent scroll back to direction that it came from
+- interest algorithm
+- navbar
+- suggestions page
