@@ -1,22 +1,25 @@
 
+block variables
+
 .panel-cont
   .panel
-    h1=title
+    h1=heading
     .link-cont
       h2 &#x1F517;
-      h2.link(onclick="window.location = '" + sourceLink + "'") Source Location
+      h2.link(onclick='window.open("' + linkURL + '", "_blank");') Source Location
     p=paragraph
     .col-cont
       .col
       svg(width="100%" height="100%" viewBox="0 0 500 500" preserveAspectRatio="xMaxYMin meet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink")
         foreignObject(width="500px" height="500px" xmlns="http://www.w3.org/1999/xhtml")
           div(xmlns="http://www.w3.org/1999/xhtml" style="width:500px; height:500px;")
-            .code-cont
-              pre(class='code' style="font-size: " + fontSize + "px;")=code
+            block code
       div(style="height:100%; display: flex; ")
       h1(style="font-size: 64px; box-sizing: border-box; padding: 20px;  margin: auto; font-family: 'Source Code Pro', Consolas, monospace; white-space: nowrap;") ->
       .col
       svg(width="100%" height="100%" viewBox="0 0 500 500" preserveAspectRatio="xMinYMin meet" style="" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink")
         foreignObject(width="500px" height="500px" xmlns="http://www.w3.org/1999/xhtml")
           div(xmlns="http://www.w3.org/1999/xhtml" style="width:500px; height:500px;")
-            img(src=imageURL style="border-radius: 25px;height:500px; width:500px;")
+            //img(src="/images/test.jpg" style="border-radius: 25px;height:500px; width:500px;")
+            block output
+      

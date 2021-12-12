@@ -35,12 +35,12 @@ router.get('/', function(req, res, next) {
 //              ..,--------,*/`,
 //     imageURL: "/images/test.jpg",
 //   }));
-  let p = path.join(__dirname + "/../library/torus.json")
-  data = JSON.parse(fs.readFileSync(p));
+  // let p = path.join(__dirname + "/../library/torus.json")
+  // data = JSON.parse(fs.readFileSync(p));
 
-  console.log(data);
+  // console.log(data);
 
-  res.render('main/index', data);
+  res.render('main/index');
 });
 
 module.exports = router;

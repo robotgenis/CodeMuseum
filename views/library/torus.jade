@@ -1,26 +1,18 @@
+extends ../main/panel
 
-.panel-cont
-  .panel
-    h1 Donut math
-    .link-cont
-      h2 &#x1F517;
-      h2.link(onclick='window.open("https://www.a1k0n.net/2011/07/20/donut-math.html", "_blank");') Source Location
-    p Test paragraph with some words tewst
-    .col-cont
-      .col
-      svg(width="100%" height="100%" viewBox="0 0 500 500" preserveAspectRatio="xMaxYMin meet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink")
-        foreignObject(width="500px" height="500px" xmlns="http://www.w3.org/1999/xhtml")
-          div(xmlns="http://www.w3.org/1999/xhtml" style="width:500px; height:500px;")
-            .code-cont
-              pre(class='code' style="font-size: 20px;")="\n             k;double sin()\n         ,cos();main(){float A=\n       0,B=0,i,j,z[1760];char b[\n     1760];printf(\"\\x1b[2J\");for(;;\n  ){memset(b,32,1760);memset(z,0,7040)\n  ;for(j=0;6.28>j;j+=0.07)for(i=0;6.28\n >i;i+=0.02){float c=sin(i),d=cos(j),e=\n sin(A),f=sin(j),g=cos(A),h=d+2,D=1/(c*\n h*e+f*g+5),l=cos      (i),m=cos(B),n=s\\\nin(B),t=c*h*g-f*        e;int x=40+30*D*\n(l*h*m-t*n),y=            12+15*D*(l*h*n\n+t*m),o=x+80*y,          N=8*((f*e-c*d*g\n )*m-c*d*e-f*g-l        *d*n);if(22>y&&\n y>0&&x>0&&80>x&&D>z[o]){z[o]=D;;;b[o]=\n \".,-~:;=!*#$@\"[N>0?N:0];}}/*#****!!-*/\n  printf(\"\\x1b[H\");for(k=0;1761>k;k++)\n   putchar(k%80?b[k]:10);A+=0.04;B+=\n     0.02;}}/*****####*******!!=;:~\n       ~::==!!!**********!!!==::-\n         .,~~;;;========;;;:~-.\n             ..,--------,*/"
-      div(style="height:100%; display: flex; ")
-      h1(style="font-size: 64px; box-sizing: border-box; padding: 20px;  margin: auto; font-family: 'Source Code Pro', Consolas, monospace; white-space: nowrap;") ->
-      .col
-      svg(width="100%" height="100%" viewBox="0 0 500 500" preserveAspectRatio="xMinYMin meet" style="" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink")
-        foreignObject(width="500px" height="500px" xmlns="http://www.w3.org/1999/xhtml")
-          div(xmlns="http://www.w3.org/1999/xhtml" style="width:500px; height:500px;")
-            //img(src="/images/test.jpg" style="border-radius: 25px;height:500px; width:500px;")
-            .code-cont(style="")
-              pre#torus(class='code' style="font-size: 18px;overflow: visible; position:absolute; left:-180px;")
-            script(src="/library/torus.js")
+block variables
+  //Torus
+  - var heading = "Donut math";
+  - var linkURL = "https://www.a1k0n.net/2011/07/20/donut-math.html";
+  - var paragraph = "Some test workds for a paragraph";
+
+block code
+  .code-cont
+    pre(class='code' style=" font-size: 20px;")="\n             k;double sin()\n         ,cos();main(){float A=\n       0,B=0,i,j,z[1760];char b[\n     1760];printf(\"\\x1b[2J\");for(;;\n  ){memset(b,32,1760);memset(z,0,7040)\n  ;for(j=0;6.28>j;j+=0.07)for(i=0;6.28\n >i;i+=0.02){float c=sin(i),d=cos(j),e=\n sin(A),f=sin(j),g=cos(A),h=d+2,D=1/(c*\n h*e+f*g+5),l=cos      (i),m=cos(B),n=s\\\nin(B),t=c*h*g-f*        e;int x=40+30*D*\n(l*h*m-t*n),y=            12+15*D*(l*h*n\n+t*m),o=x+80*y,          N=8*((f*e-c*d*g\n )*m-c*d*e-f*g-l        *d*n);if(22>y&&\n y>0&&x>0&&80>x&&D>z[o]){z[o]=D;;;b[o]=\n \".,-~:;=!*#$@\"[N>0?N:0];}}/*#****!!-*/\n  printf(\"\\x1b[H\");for(k=0;1761>k;k++)\n   putchar(k%80?b[k]:10);A+=0.04;B+=\n     0.02;}}/*****####*******!!=;:~\n       ~::==!!!**********!!!==::-\n         .,~~;;;========;;;:~-.\n             ..,--------,*/"
+
+
+block output
+  .code-cont(style="")
+    pre#torus(class='code' style="font-size: 18px;overflow: visible; position:absolute; left:-180px;")
+  script(src="/library/torus/torus.js")
       
