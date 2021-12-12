@@ -53,8 +53,7 @@
 	//   };
 	//   asciiframe();
 	}
-	
-	setTimeout(_onload, 1000);
+	_onload();
 	// _onload();
 	// if(document.all)
 	// 	// $(document).ready(function(){
