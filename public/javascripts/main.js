@@ -9,17 +9,6 @@ var index = 0;
 
 var rand = 0;
 
-
-function clickAnimation(t){
-    $(t).css({
-        "background-color": getComputedStyle(document.documentElement).getPropertyValue('--color-panel')
-    });
-
-    $(t).animate({
-        "background-color":getComputedStyle(document.documentElement).getPropertyValue('--color-light-hover')
-    }, 500);
-}
-
 function newPanel(panelID){
     $.get("/library/", {"used":[]}, function(data){
         console.log(data);
