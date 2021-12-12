@@ -3,7 +3,8 @@ var router = express.Router();
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  res.render('library/torus');
+  console.log(req.params);
+  res.render('library/jsf');
 });
 
 module.exports = router;
