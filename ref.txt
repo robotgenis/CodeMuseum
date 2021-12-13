@@ -13,3 +13,4 @@ Developement Plan/Ideas
 - suggestions page
 - expand library
 - make processing better on low wifi (group multiple library items)
+- work on mobile

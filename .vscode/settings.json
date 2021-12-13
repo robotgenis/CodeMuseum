@@ -2,5 +2,7 @@
 	"appService.zipIgnorePattern": [
 		"node_modules{,/**}",
 		".vscode{,/**}"
-	]
+	],
+	"appService.defaultWebAppToDeploy": "/subscriptions/3862f11e-8bf9-4fe4-9311-03b5755ffc08/resourceGroups/Labyrinthine/providers/Microsoft.Web/sites/Labyrinthine",
+	"appService.deploySubpath": "."
 }
