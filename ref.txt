@@ -6,13 +6,10 @@ https://10print.org/
 
 Developement Plan/Ideas
 
-- create Developement branch on git
-- convert to jade
-- organize storage of pieces
-- opening page with info about site
 - save scroll direction
 - prevent scroll back to direction that it came from
 - interest algorithm
 - navbar
 - suggestions page
-- test #2
+- expand library
+- make processing better on low wifi (group multiple library items)

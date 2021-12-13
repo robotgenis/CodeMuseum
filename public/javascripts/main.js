@@ -9,10 +9,14 @@ var index = 0;
 
 var rand = 0;
 
-function newPanel(panelID){
-    $.get("/library/", {"used":[]}, function(data){
-        console.log(data);
+function newPanel(panelID, complete = function(){}){
 
+    let used = new Set([]);
+    for(let i in panels){
+        used.add(panels[i].id);
+    }
+
+    $.get("/library/", {"used":JSON.stringify(Array.from(used))}, function(data){
         let s = data.indexOf("<!--");
         let e = data.indexOf("-->");
 
@@ -25,6 +29,8 @@ function newPanel(panelID){
             id: id, 
             html: $(panelID).html()
         });
+
+        complete();
     });
 }
 
@@ -66,8 +72,9 @@ function generateScroll(atEnd = false){
 $(document).ready(function(){
 
     //Create initial page
-    newPanel("#item-1");
-    newPanel("#item-2");
+    newPanel("#item-1", function(){ 
+        newPanel("#item-2");
+    });
     generateScroll();
 
     //Scroll event
@@ -132,15 +139,17 @@ $(document).ready(function(){
             $("#item-2").html(panels[index + 1].html);
         }
         if(atMax){
-            generateScroll();
+            if(panels[index+1].id != "end_panel"){
+                generateScroll();
 
-            index++;
-
-            $("#item-1").html(panels[index].html);
-            if(index + 1 >= panels.length){
-                newPanel("#item-2");
-            }else{
-                $("#item-2").html(panels[index + 1].html);
+                index++;
+    
+                $("#item-1").html(panels[index].html);
+                if(index + 1 >= panels.length){
+                    newPanel("#item-2");
+                }else{
+                    $("#item-2").html(panels[index + 1].html);
+                }
             }
         }
         return false;
