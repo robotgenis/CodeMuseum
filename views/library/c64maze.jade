@@ -1,0 +1,16 @@
+extends ../main/panel
+
+block variables
+  //C64Maze
+  - var heading = "One-line Commodore 64 BASIC Maze Algorithm";
+  - var linkURL = "https://10print.org/";
+  - var paragraph = "This line of code ran on a Commodore 64 BASIC infinity generates a random maze. ";
+
+block code
+  .code-cont
+    pre(class='code' style=" font-size: 21px;")="10 PRINT CHR$(205.5+RND(1)); : GOTO 10"
+
+block output
+  .code-cont(style="")
+    img(src="/images/test.jpg" style="border-radius: 25px;height:500px; width:500px;")
+      
