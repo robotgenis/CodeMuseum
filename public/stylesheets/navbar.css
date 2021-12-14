@@ -1,0 +1,42 @@
+
+:root{
+	--color-nav: #2a2e30;
+	--color-nav-shadow: #151718;
+
+	--nav-height: 100px;
+}
+
+.nav-cont{
+	width: 100%;
+	height: var(--nav-height);
+	/* bottom: 100vh; */
+	position: fixed; 
+	z-index: 100; 
+}
+
+.nav-cont:hover  > nav{
+	bottom: 0%;
+	opacity: 1;
+}
+
+nav{
+	background-color: var(--color-nav); 
+	box-shadow: 0px 5px 20px 20px var(--color-nav-shadow);
+	position:relative;
+	width: 100%;
+	height: var(--nav-height);
+	bottom: 100%;
+	box-sizing: border-box;
+	opacity: 0;
+	transition: bottom 0.3s, opacity 0.3s;
+}
+
+nav > *{
+	padding: 0px;
+	width: fit-content;
+	float: left;
+}
+
+nav > *:hover{
+	color: var(--color-light)
+}
