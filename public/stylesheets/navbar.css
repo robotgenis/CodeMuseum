@@ -1,7 +1,12 @@
 
 :root{
-	--color-nav: #2a2e30;
-	--color-nav-shadow: #151718;
+	--color-nav: #29292b;
+	--color-nav-shadow: rgb(61, 61, 61);
+
+	--color-nav-text: #ffffff;
+	--color-nav-text-hover: #ffb23d;
+
+	--font-nav: 'Courier New';
 
 	--nav-height: 100px;
 }
@@ -9,7 +14,6 @@
 .nav-cont{
 	width: 100%;
 	height: var(--nav-height);
-	/* bottom: 100vh; */
 	position: fixed; 
 	z-index: 100; 
 }
@@ -21,7 +25,8 @@
 
 nav{
 	background-color: var(--color-nav); 
-	box-shadow: 0px 5px 20px 20px var(--color-nav-shadow);
+	color: var(--color-nav-text);
+	box-shadow: 0px -15px 30px 30px var(--color-nav-shadow);
 	position:relative;
 	width: 100%;
 	height: var(--nav-height);
@@ -29,6 +34,7 @@ nav{
 	box-sizing: border-box;
 	opacity: 0;
 	transition: bottom 0.3s, opacity 0.3s;
+	font-family: var(--font-nav);
 }
 
 nav > *{
@@ -38,5 +44,5 @@ nav > *{
 }
 
 nav > *:hover{
-	color: var(--color-light)
+	color: var(--color-nav-text-hover);
 }

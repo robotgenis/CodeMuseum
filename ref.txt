@@ -6,8 +6,7 @@ https://10print.org/
 
 Developement Plan/Ideas
 
-- save scroll direction
-- prevent scroll back to direction that it came from
+x prevent scroll back to direction that it came from
 - interest algorithm
 - navbar
 - suggestions page

@@ -1,15 +1,16 @@
+
 :root{
-	--color-background: #bed9b1;
-	--color-text: #DE8C5A;
+	--color-background: #c1b098;
 
-	--color-shadow: #8F858F;
-	--color-panel: #42484A;
+	--color-shadow: #58585a;
+	--color-panel: #39393a;
 
-	--color-light: #F5F3F2;
-	--color-light-hover: #d4d3d3;
-	--color-dark: black;
+	--color-text: #ffffff;
+	--color-link-hover: #afafaf;
 
-	--color-code: #9D6457;
+	--color-code-background: #000000;
+	--color-code-text: #ffffff;
+	--color-code-hover: #4d4d4d;
 
 	--font-code: "Source Code Pro", Consolas, monospace;
 	--font-paragraph: 'Courier New';
@@ -23,7 +24,6 @@ html, body{
 
 .panel-cont{
 	background-color: var(--color-background);
-	/* position: ab; */
 	height: 100vh;
 	width: 100vw;
 	margin: 0;
@@ -57,19 +57,15 @@ html, body{
 	height: 100%;
 	flex: 1;
 	min-width: 0;
-	
 }
 
 .code-cont{
-	background: var(--color-light);
+	background: var(--color-code-background);
 	width: 500px;
 	height: 500px;
 	padding: 4px;
 	box-sizing: border-box;
 	border-radius: 25px;
-	/* display: flex;
-	flex-direction: column; */
-
 }
 
 .code{
@@ -78,7 +74,7 @@ html, body{
 	overflow:hidden;
     font-family: var(--font-code);
 	margin: 0px;
-	color: var(--color-code);
+	color: var(--color-code-text);
 	counter-reset: line-numbering;
     white-space: pre;
     overflow-x: auto;
@@ -118,7 +114,7 @@ h2{
 }
 
 .link:hover{
-	color:var(--color-light);
+	color:var(--color-link-hover);
 	text-decoration: underline;
 }
 
@@ -128,15 +124,16 @@ p{
 }
 
 textarea{
-	color: var(--color-code);
+	color: var(--color-code-text);
 	border-width: 0;
 	outline:none;
+	background-color: var(--color-code-background);
 }
 
 button{
 	border-width: 0;
-	background-color: var(--color-light);
-	color:var(--color-code);
+	background-color: var(--color-code-background);
+	color:var(--color-code-text);
 	font-weight: bold;
 	padding: 10px;
 	border-radius: 10px;
@@ -144,10 +141,8 @@ button{
 }
 
 button:hover{
-	background-color: var(--color-light-hover);
+	background-color: var(--color-code-hover);
 }
-
-
 
 .btn-code{
 	border-radius: 0px 0px 10px 10px;

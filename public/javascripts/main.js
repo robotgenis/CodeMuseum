@@ -2,12 +2,14 @@
 const SCROLL_RIGHT = 0;
 const SCROLL_DOWN = 1;
 const SCROLL_LEFT = 2;
-const SCROLL_UP = 3
+const SCROLL_UP = 3;
+const SCROLL_RANDOM = 4;
 
 var panels = [];
 var index = 0;
 
-var rand = 0;
+var scrollDirection = 0;
+var isScrolling = false;
 
 function newPanel(panelID, complete = function(){}){
 
@@ -27,6 +29,7 @@ function newPanel(panelID, complete = function(){}){
 
         panels.push({
             id: id, 
+            scrollDirection: Math.floor(Math.random() * 4),
             html: $(panelID).html()
         });
 
@@ -34,13 +37,14 @@ function newPanel(panelID, complete = function(){}){
     });
 }
 
+
 function generateScroll(atEnd = false){
-    rand = Math.floor(Math.random() * 4);
-    // rand = SCROLL_UP;
+    //scrollDirection = Math.floor(Math.random() * 4);
+    // scrollDirection = SCROLL_UP;
     $(".cont").removeClass("cont-down cont-left cont-right cont-up");
     $(".item").removeClass("item-down item-left item-right item-up");
     $(".scroll-cont").removeClass("scroll-cont-down scroll-cont-left scroll-cont-right scroll-cont-up");
-    switch(rand){
+    switch(scrollDirection){
         case SCROLL_RIGHT:
             $(".cont").addClass("cont-right");
             $(".item").addClass("item-right");
@@ -73,76 +77,25 @@ $(document).ready(function(){
 
     //Create initial page
     newPanel("#item-1", function(){ 
+        scrollDirection = panels[index].scrollDirection;
+        generateScroll();
         newPanel("#item-2");
     });
-    generateScroll();
 
     //Scroll event
     $(".scroll-cont").bind('mousewheel DOMMouseScroll', function(e){
+        if(isScrolling) return false;
 
         let scrollAmount = e.originalEvent.wheelDelta;
 
         let scrollContent = $(".scroll-cont");
 
-        let atMin = false;
-        let atMax = false;
-
-        switch(rand){
-            case SCROLL_RIGHT:
-                scrollContent.scrollLeft(scrollContent.scrollLeft() - scrollAmount);
-
-                if(scrollAmount > 0 && scrollContent.scrollLeft() == 0 && index > 0){
-                    atMin = true;
-                }
-                if(scrollAmount < 0 && $(".cont").width() == scrollContent.width() + scrollContent.scrollLeft()){
-                    atMax = true;
-                }
-                break;
-            case SCROLL_DOWN:
-                scrollContent.scrollTop(scrollContent.scrollTop() - scrollAmount);
-
-                if(scrollAmount > 0 && scrollContent.scrollTop() == 0 && index > 0){
-                    atMin = true;
-                }
-                if(scrollAmount < 0 && $(".cont").height() == scrollContent.height() + scrollContent.scrollTop()){
-                    atMax = true;
-                }
-                break;
-            case SCROLL_LEFT:
-                scrollContent.scrollLeft(scrollContent.scrollLeft() + scrollAmount);
-
-                if(scrollAmount > 0 && $(".cont").width() == scrollContent.width() + scrollContent.scrollLeft() && index > 0){
-                    atMin = true;
-                }
-                if(scrollAmount < 0 && scrollContent.scrollLeft() == 0){
-                    atMax = true;
-                }
-                break;
-            case SCROLL_UP:
-                scrollContent.scrollTop(scrollContent.scrollTop() + scrollAmount);
-
-                if(scrollAmount > 0 && $(".cont").height() == scrollContent.height() + scrollContent.scrollTop() && index > 0){
-                    atMin = true;
-                }
-                if(scrollAmount < 0 && scrollContent.scrollTop() == 0){
-                    atMax = true;
-                }
-                break;
-
-        }
-
-        if(atMin){
-            generateScroll(true);
-
-            index--;
-            $("#item-1").html(panels[index].html);
-            $("#item-2").html(panels[index + 1].html);
-        }
-        if(atMax){
+        let atMaxFunc = function(){
             if(panels[index+1].id != "end_panel"){
-                generateScroll();
-
                 index++;
+                
+                scrollDirection = panels[index].scrollDirection;
+                generateScroll();
     
                 $("#item-1").html(panels[index].html);
                 if(index + 1 >= panels.length){
@@ -151,6 +104,121 @@ $(document).ready(function(){
                     $("#item-2").html(panels[index + 1].html);
                 }
             }
+        };
+
+        let atMinFunc = function(){
+            index--;
+
+            scrollDirection = panels[index].scrollDirection;
+            generateScroll(true);
+
+            $("#item-1").html(panels[index].html);
+            $("#item-2").html(panels[index + 1].html);
+        }
+
+        //Change Scroll Animation Settings in this funciton
+        let scrollAnimateFunc = function(arg, finish){
+            isScrolling = true;
+            scrollContent.animate(arg, 500, "swing", function(){
+                isScrolling = false;
+                finish();
+            });
+        };
+
+        //Change Panel Prior if needed
+        if(scrollAmount > 0){
+            switch(scrollDirection){
+                case SCROLL_RIGHT:
+                    if(scrollContent.scrollLeft() == 0 && index > 0)
+                        atMinFunc();
+                    break;
+                case SCROLL_DOWN:
+                    if(scrollContent.scrollTop() == 0 && index > 0)
+                        atMinFunc();
+                    break;
+                case SCROLL_LEFT:
+                    if(scrollContent.scrollLeft() > 0 && index > 0)
+                        atMinFunc();
+                    break;
+                case SCROLL_UP:
+                    if(scrollContent.scrollTop() > 0 && index > 0)
+                        atMinFunc();
+                    break;
+    
+            }
+        }
+
+        //Animate Scroll
+        switch(scrollDirection){
+            case SCROLL_RIGHT:
+                if(scrollAmount > 0){
+                    if(scrollContent.scrollLeft() > 0){
+                        scrollAnimateFunc({
+                            scrollLeft: 0
+                        },function(){});
+                    }
+                }else if(scrollAmount < 0){
+                    if(scrollContent.scrollLeft() == 0){
+                        scrollAnimateFunc({
+                            scrollLeft: scrollContent.width()
+                        }, function(){
+                            atMaxFunc();
+                        });
+                    }
+                }
+                break;
+            case SCROLL_DOWN:
+                if(scrollAmount > 0){
+                    if(scrollContent.scrollTop() > 0){
+                        scrollAnimateFunc({
+                            scrollTop: 0
+                        },function(){});
+                    }
+                }else if(scrollAmount < 0){
+                    if(scrollContent.scrollTop() == 0){
+                        scrollAnimateFunc({
+                            scrollTop: scrollContent.height()
+                        }, function(){
+                            atMaxFunc();
+                        });
+                    }
+                }
+                break;
+            case SCROLL_LEFT:
+                if(scrollAmount > 0){
+                    if(scrollContent.scrollLeft() == 0){
+                        scrollAnimateFunc({
+                            scrollLeft: scrollContent.width()
+                        },function(){});
+                    }
+                }else if(scrollAmount < 0){
+                    if(scrollContent.scrollLeft() > 0){
+                        scrollAnimateFunc({
+                            scrollLeft: 0
+                        }, function(){
+                            atMaxFunc();
+                        });
+                    }
+                }
+                break;
+            case SCROLL_UP:
+                if(scrollAmount > 0){
+                    if(scrollContent.scrollTop() == 0){
+                        scrollAnimateFunc({
+                            scrollTop: scrollContent.height()
+                        },function(){});
+                    }
+                }else if(scrollAmount < 0){
+                    if(scrollContent.scrollTop() > 0){
+                        scrollAnimateFunc({
+                            scrollTop: 0
+                        }, function(){
+                            atMaxFunc();
+                        });
+                    }
+                }
+                break;
+
         }
         return false;
     });
