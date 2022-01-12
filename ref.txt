@@ -8,8 +8,9 @@ Developement Plan/Ideas
 
 x prevent scroll back to direction that it came from
 - interest algorithm
-- navbar
-- suggestions page
+- suggestions page (included in feed)
+- about page (included in feed)
 - expand library
 - make processing better on low wifi (group multiple library items)
 - work on mobile
+- back to top button (maybe reset path)

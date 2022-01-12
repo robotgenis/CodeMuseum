@@ -38,9 +38,15 @@ nav{
 }
 
 nav > *{
-	padding: 0px;
+	padding: 0px 20px;
 	width: fit-content;
 	float: left;
+	line-height: var(--nav-height); 
+	text-align: center;
+	height: var(--nav-height);
+	box-sizing: border-box;
+	margin: 0px;
+	word-spacing: -10px;
 }
 
 nav > *:hover{
