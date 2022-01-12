@@ -7,6 +7,10 @@ html body{
     overflow:hidden;
 }
 
+.scroll-cont::-webkit-scrollbar {
+    display: none; /* for Chrome, Safari, and Opera */
+}
+
 .scroll-cont{
     position: fixed;
     height: 100%;
