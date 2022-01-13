@@ -82,12 +82,8 @@ $(document).ready(function(){
         newPanel("#item-2");
     });
 
-    //Scroll event
-    $(".scroll-cont").bind('mousewheel DOMMouseScroll', function(e){
-        if(isScrolling) return false;
-
-        let scrollAmount = e.originalEvent.wheelDelta;
-
+    //on scroll function
+    let activateScroll = function(scrollAmount){
         let scrollContent = $(".scroll-cont");
 
         let atMaxFunc = function(){
@@ -158,7 +154,7 @@ $(document).ready(function(){
                         },function(){});
                     }
                 }else if(scrollAmount < 0){
-                    if(scrollContent.scrollLeft() == 0){
+                    if(scrollContent.scrollLeft() < scrollContent.width()){
                         scrollAnimateFunc({
                             scrollLeft: scrollContent.width()
                         }, function(){
@@ -175,7 +171,7 @@ $(document).ready(function(){
                         },function(){});
                     }
                 }else if(scrollAmount < 0){
-                    if(scrollContent.scrollTop() == 0){
+                    if(scrollContent.scrollTop() < scrollContent.height()){
                         scrollAnimateFunc({
                             scrollTop: scrollContent.height()
                         }, function(){
@@ -186,7 +182,7 @@ $(document).ready(function(){
                 break;
             case SCROLL_LEFT:
                 if(scrollAmount > 0){
-                    if(scrollContent.scrollLeft() == 0){
+                    if(scrollContent.scrollLeft() < scrollContent.width()){
                         scrollAnimateFunc({
                             scrollLeft: scrollContent.width()
                         },function(){});
@@ -203,7 +199,7 @@ $(document).ready(function(){
                 break;
             case SCROLL_UP:
                 if(scrollAmount > 0){
-                    if(scrollContent.scrollTop() == 0){
+                    if(scrollContent.scrollTop() < scrollContent.height()){
                         scrollAnimateFunc({
                             scrollTop: scrollContent.height()
                         },function(){});
@@ -220,6 +216,36 @@ $(document).ready(function(){
                 break;
 
         }
+    };
+
+    $(document).on("tap", function(e){
+
+        let eventTarget = $(e.originalEvent.target);
+
+        console.log(eventTarget);
+
+        if(eventTarget.is("textarea") || eventTarget.is("button") || eventTarget.is(".link")){
+            return true;
+        }
+
+        if(window.visualViewport.width >= window.innerWidth){
+            let scrollAmount = e.clientX - (window.innerWidth / 2);
+
+            console.log(scrollAmount);
+
+            activateScroll(-scrollAmount);
+        }
+    });
+
+    //Scroll event
+    $(".scroll-cont").bind('wheel mousewheel DOMMouseScroll', function(e){
+        console.log(e.originalEvent);
+        if(isScrolling) return false;
+
+        let scrollAmount = e.originalEvent.wheelDelta;
+
+        activateScroll(scrollAmount);
+        
         return false;
     });
 });
