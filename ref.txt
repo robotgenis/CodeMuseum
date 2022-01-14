@@ -1,6 +1,7 @@
-https://www.youtube.com/watch?v=DEqXNfs_HhY - https://www.a1k0n.net/2011/07/20/donut-math.html
-http://www.jsfuck.com/
-https://10print.org/
+o https://www.youtube.com/watch?v=DEqXNfs_HhY - https://www.a1k0n.net/2011/07/20/donut-math.html
+o http://www.jsfuck.com/
+0 https://10print.org/
+- https://www.dangermouse.net/esoteric/piet.html
 
 
 

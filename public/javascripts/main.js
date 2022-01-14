@@ -84,6 +84,8 @@ $(document).ready(function(){
 
     //on scroll function
     let activateScroll = function(scrollAmount){
+        if(isScrolling) return;
+
         let scrollContent = $(".scroll-cont");
 
         let atMaxFunc = function(){
@@ -231,17 +233,23 @@ $(document).ready(function(){
         if(window.visualViewport.width >= window.innerWidth){
             let scrollAmount = e.clientX - (window.innerWidth / 2);
 
+            //dead area in center
+            if(Math.abs(scrollAmount) < 200){
+                scrollAmount = 0;
+            }
+
             console.log(scrollAmount);
 
             activateScroll(-scrollAmount);
         }
+        return false;
     });
+
+    //prevent drag
+
 
     //Scroll event
     $(".scroll-cont").bind('wheel mousewheel DOMMouseScroll', function(e){
-        console.log(e.originalEvent);
-        if(isScrolling) return false;
-
         let scrollAmount = e.originalEvent.wheelDelta;
 
         activateScroll(scrollAmount);
