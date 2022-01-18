@@ -1,4 +1,3 @@
-
 const SCROLL_RIGHT = 0;
 const SCROLL_DOWN = 1;
 const SCROLL_LEFT = 2;
@@ -69,7 +68,6 @@ function generateScroll(atEnd = false){
             $(".scroll-cont").addClass("scroll-cont-up");
             $(".scroll-cont").scrollTop((atEnd) ? 0 : $(".item").height());
             break;
-
     }
 }
 
@@ -81,6 +79,19 @@ $(document).ready(function(){
         generateScroll();
         newPanel("#item-2");
     });
+
+    let sizeSVGs = function(){
+        if(window.matchMedia("(orientation: portrait)").matches){
+            $(".svg-right").attr("preserveAspectRatio","xMidYMid meet");
+            $(".svg-left").attr("preserveAspectRatio","xMidYMid meet");
+        }else{
+            $(".svg-right").attr("preserveAspectRatio","xMinYMax meet");
+            $(".svg-left").attr("preserveAspectRatio","xMaxYMax meet");
+        }
+    };
+
+    //On Resize
+    $(window).resize(sizeSVGs);
 
     //on scroll function
     let activateScroll = function(scrollAmount){
@@ -101,6 +112,7 @@ $(document).ready(function(){
                 }else{
                     $("#item-2").html(panels[index + 1].html);
                 }
+                sizeSVGs();
             }
         };
 
@@ -112,11 +124,13 @@ $(document).ready(function(){
 
             $("#item-1").html(panels[index].html);
             $("#item-2").html(panels[index + 1].html);
+            sizeSVGs();
         }
 
         //Change Scroll Animation Settings in this funciton
         let scrollAnimateFunc = function(arg, finish){
             isScrolling = true;
+            sizeSVGs();
             scrollContent.animate(arg, 500, "swing", function(){
                 isScrolling = false;
                 finish();
@@ -230,6 +244,8 @@ $(document).ready(function(){
             return true;
         }
 
+        console.log(window.visualViewport.width, window.innerWidth);
+
         if(window.visualViewport.width >= window.innerWidth){
             let scrollAmount = e.clientX - (window.innerWidth / 2);
 
@@ -244,9 +260,6 @@ $(document).ready(function(){
         }
         return false;
     });
-
-    //prevent drag
-
 
     //Scroll event
     $(".scroll-cont").bind('wheel mousewheel DOMMouseScroll', function(e){

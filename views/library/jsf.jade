@@ -11,7 +11,7 @@ block code
     textarea#jsf-code(style="padding: 10px; box-sizing: border-box;resize: none; border-radius: 25px; font-size: 24px; margin:0; width:500px; height: 500px; ") alert(1)
 
 block caption1
-  button.btn-code(style="float: right;" onclick="$('#jsf-compiled').val(window.JSFuck.encode($('#jsf-code').val(), true, false));") CONVERT TO JSFUCK
+  button.btn-code.btn-right(onclick="$('#jsf-compiled').val(window.JSFuck.encode($('#jsf-code').val(), true, false));") CONVERT TO JSFUCK
 
 block output
   .code-cont(style="padding: 0px;")

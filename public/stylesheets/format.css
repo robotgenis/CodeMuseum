@@ -59,6 +59,61 @@ html, body{
 	min-width: 0;
 }
 
+.arrow{
+	height:100%; 
+	display: flex;
+}
+
+.arrow > h1{
+	font-size: 64px; 
+	box-sizing: border-box; 
+	padding: 20px;  
+	margin: auto; 
+	font-family: 'Source Code Pro', Consolas, monospace; 
+	white-space: nowrap;
+}
+
+
+@media(orientation: portrait){
+	.col-cont{
+		flex-direction: column;
+	}
+
+	.col{
+		width: 100%;
+		flex: 1;
+		min-height: 0
+	}
+
+	.arrow{
+		width: 100%;
+		height: auto;
+
+		/*rotate arrow*/
+		transform: rotate(90deg);
+	  
+		/* Safari */
+		-webkit-transform: rotate(90deg);
+	  
+		/* Firefox */
+		-moz-transform: rotate(90deg);
+	  
+		/* IE */
+		-ms-transform: rotate(90deg);
+	  
+		/* Opera */
+		-o-transform: rotate(90deg);
+	  
+		/* Internet Explorer */
+		filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1);
+	}
+
+	.arrow > h1{
+		font-size: 44px; 
+	}
+}
+
+
 .code-cont{
 	background: var(--color-code-background);
 	width: 500px;
@@ -150,4 +205,18 @@ button:hover{
 	margin-left: 25px;
 	margin-right: 25px;
 	border-top: 1px solid var(--color-shadow);
+}
+
+.btn-right{
+	float: right;
+}
+
+@media(orientation: portrait){
+	.btn-code{
+		display:table;
+		margin: 0 auto;
+		float: none;
+		position: relative;
+		z-index: 100;
+	}
 }
